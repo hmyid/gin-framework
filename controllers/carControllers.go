@@ -124,3 +124,40 @@ func UpdateCar(ctx *gin.Context) {
 		"message" : fmt.Sprintf("Successfuly id %v : ", carID),
 	})
 }
+
+
+func DeleteCar(ctx *gin.Context) {
+	GetCarID := ctx.Param("CarID")
+	carID, err := strconv.Atoi(GetCarID)
+
+	if err != nil {
+		ctx.AbortWithError(http.StatusBadRequest, err)
+	}
+
+	condition := false
+	var Index int
+
+	for i, car := range DataCar {
+		if carID == car.CarID {
+			condition = true
+			Index = i
+			break
+		}
+	}
+
+	if !condition {
+		ctx.AbortWithStatusJSON(http.StatusNotFound, gin.H{
+			"status_message" : "Not Found",
+			"error_message" : "Error",
+		})
+	}
+
+	copy(DataCar[Index:], DataCar[Index+1:])
+	DataCar[len(DataCar)-1] = Car{}
+	DataCar = DataCar[:len(DataCar)-1]
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"message" : fmt.Sprintf("Successfully id %v ", carID),
+	})
+
+}
