@@ -15,7 +15,7 @@ func StartServer() *gin.Engine{
 
 	routers.PUT("/addcar/:CarID", controllers.UpdateCar)
 
-	routers.DELETE("/addcar/:CarId", controllers.DeleteCar)
+	routers.DELETE("/addcar/:CarID", controllers.DeleteCar)
 
 	return routers
 }
