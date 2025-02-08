@@ -159,5 +159,4 @@ func DeleteCar(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"message" : fmt.Sprintf("Successfully id %v ", carID),
 	})
-
 }
