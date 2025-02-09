@@ -20,3 +20,6 @@ import (
     github.com/gin-gonic/gin
 )
 ```
+Sebelum membuat Rest-API. Ada baiknya untuk membuat folder dan file terpisah, tujuan ini untuk mempermudah debuging dan keterbacaan code. Struktur yang harus diikuti sebagai berikut :
+
+![alt text](image/image.png)
